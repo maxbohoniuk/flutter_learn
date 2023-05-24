@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.green,
               title: const Text("Questions")
           ),
-          body: QuestionWidget(question: Question(category: "Cars", text: "bla bla?")),
+          body: QuestionWidget(question: Question(category: "Cars", text: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla v?")),
         )
     );
   }
@@ -61,7 +61,7 @@ class QuestionWidget extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.only(bottomLeft: Radius.circular(15), bottomRight: Radius.circular(15))
                   ),
-                    child: Center(child: Text(_question.text, style: const TextStyle(fontSize: 17.0),))
+                    child: Center(child: Text(_question.text, style: const TextStyle(fontSize: 17.0), textAlign: TextAlign.center,))
                 ),
               )
             ],
