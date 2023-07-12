@@ -27,7 +27,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final List<Widget> _navBarScreens = [QuestionsScreen(), QuestionAddScreen()];
   int _navBarIndex = 0;
 
   // This widget is the root of your application.
@@ -40,7 +39,7 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             scrollBehavior: CustomScrollBehaviour(),
             home: Scaffold(
-                bottomNavigationBar: Container(
+                bottomNavigationBar: MyApp.isLargeDevice ? null : Container(
                   padding: const EdgeInsets.fromLTRB(8, 1, 8, 10),
                   decoration: const BoxDecoration(boxShadow: [BoxShadow(blurRadius: 10.0, spreadRadius: 3.0, color: Colors.black12)], color: Colors.transparent),
                   child: ClipRRect(
@@ -53,10 +52,23 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ),
                 ),
-                body: IndexedStack(
-                  index: _navBarIndex,
-                  children: _navBarScreens,
-                )
+                body: MyApp.isLargeDevice ? Row(
+                  children: [
+                    NavigationRail(
+                        destinations: const [NavigationRailDestination(icon: Icon(Icons.list), label: Text("List")), NavigationRailDestination(icon: Icon(Icons.add), label: Text("Add"))],
+                        selectedIndex: _navBarIndex,
+                        onDestinationSelected: _navBarNavigate,
+                        labelType: NavigationRailLabelType.selected,
+                    ),
+                    const VerticalDivider(thickness: 1, width: 1),
+                    Expanded(
+                      child: IndexedStack(
+                        index: _navBarIndex,
+                        children: [QuestionsScreen(), QuestionAddScreen()],
+                      ),
+                    ),
+                  ],
+                ) : _getIndexedStack()
             )
         );
       },
@@ -72,6 +84,13 @@ class _MyAppState extends State<MyApp> {
     setState(() {
       _navBarIndex = index;
     });
+  }
+
+  IndexedStack _getIndexedStack(){
+    return IndexedStack(
+      index: _navBarIndex,
+      children: [QuestionsScreen(), QuestionAddScreen()],
+    );
   }
 
   void checkDeviceSize(double width, double height){

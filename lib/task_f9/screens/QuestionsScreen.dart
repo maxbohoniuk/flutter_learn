@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import '../task_f9.dart';
 import '../models/Question.dart';
+import '../widgets/MyAppBar.dart';
 import '../widgets/QuestionWidget.dart';
 
 class QuestionsScreen extends StatefulWidget {
   static List<Question> questions = Question.randomQuestions(listSize: 5);
 
-  QuestionsScreen({Key? key}) : super(key: key);
+  const QuestionsScreen({Key? key}) : super(key: key);
 
   @override
   State<QuestionsScreen> createState() => _QuestionsScreenState();
@@ -17,10 +18,8 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.green,
-          title: const Text("Questions"),
+      appBar: MyAppBar(
+          titleText: "Questions",
           actions: [IconButton(onPressed: refresh, icon: const Icon(Icons.refresh))]
       ),
       body: Center(

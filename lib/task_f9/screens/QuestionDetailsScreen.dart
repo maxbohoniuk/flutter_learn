@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learn/task_f9/widgets/MyImageWidget.dart';
 import '../../task_f9/models/Question.dart';
-import '../../task_f9/task_f9.dart';
+import '../widgets/MyAppBar.dart';
 
 class QuestionDetailsScreen extends StatelessWidget {
   late final Question _question;
@@ -15,10 +15,9 @@ class QuestionDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: MyApp.randomColor(),
-          title: Text(_question.category.name)),
+      appBar: MyAppBar(
+          titleText: _question.category.name
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.green,
         onPressed: () => fabPressed(context),

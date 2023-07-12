@@ -17,7 +17,7 @@ class QuestionWidget extends StatelessWidget {
         Navigator.push(context, MaterialPageRoute(builder: (context) => QuestionDetailsScreen(question: _question)));
       },
       child: Container(
-        constraints: const BoxConstraints(maxHeight: 300, maxWidth: 400),
+        constraints: const BoxConstraints(maxHeight: 300, maxWidth: 600),
         decoration: const BoxDecoration(
             boxShadow: [
               BoxShadow(blurRadius: 8.0, spreadRadius: 3.0, color: Colors.black26)

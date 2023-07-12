@@ -3,6 +3,8 @@ import 'package:flutter_learn/task_f9/models/Question.dart';
 import 'package:flutter_learn/task_f9/screens/QuestionsScreen.dart';
 import 'package:flutter_learn/task_f9/widgets/MyImageWidget.dart';
 
+import '../widgets/MyAppBar.dart';
+
 class QuestionAddScreen extends StatefulWidget {
   QuestionAddScreen({Key? key}) : super(key: key);
 
@@ -20,11 +22,7 @@ class _QuestionAddScreenState extends State<QuestionAddScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            centerTitle: true,
-            backgroundColor: Colors.amber,
-            title: const Text("Add question")
-        ),
+      appBar: MyAppBar(titleText: "Add question"),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
